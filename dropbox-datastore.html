@@ -1,0 +1,57 @@
+<!--
+ custom element for dropbox datastore api
+ @version 0.1.1
+ @author Tomoyuki Kashiro <kashiro@github>
+ @license MIT
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+custom element for dropbox datastore api
+
+##### Example
+
+    <dropbox-datastore></dropbox-datastore>
+
+@element dropbox-datastore
+@blurb Element providing datastore manager for drop datastore api
+@status alpha
+@homepage http://kashiro.github.io/dropbox-datastore
+-->
+<polymer-element name="dropbox-datastore" attributes="appKey autoConnect" hidden>
+    <script>
+	    Polymer('dropbox-datastore', {
+		    appKey: null,
+			autoConnect: false,
+			isConnected: false,
+			dataStoreManager: null,
+			client : null,
+			ready : function(){
+			    this.client = new Dropbox.Client({key: this.appKey});
+				this.isConnected = this.client.isAuthenticated();
+				if(!this.isConnected && this.autoConnect){
+					this.connect();
+				}
+			},
+			connect: function(){
+				var me = this,
+					client = this.client;
+				client.authenticate({interactive:true},function (e) {
+					me.isConnected = client.isAuthenticated();
+					if(e){
+						me.fire('dropbox-ds-connect-error');
+						return;
+					}
+
+					if(me.isConnected){
+						me.getDataStoreManager();
+					}
+					me.fire('dropbox-ds-connect-success');
+				});
+			},
+			getDataStoreManager: function(){
+				this.dataStoreManager = this.client.getDatastoreManager();
+			}
+		});
+    </script>
+</polymer-element>
