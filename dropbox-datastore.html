@@ -11,7 +11,7 @@ custom element for dropbox datastore api
 
 ##### Example
 
-    <dropbox-datastore></dropbox-datastore>
+	<dropbox-datastore appkey="${your_api_key}" autoConnect="false"></dropbox-datastore>
 
 @element dropbox-datastore
 @blurb Element providing datastore manager for drop datastore api
@@ -21,10 +21,59 @@ custom element for dropbox datastore api
 <polymer-element name="dropbox-datastore" attributes="appKey autoConnect" hidden>
     <script>
 	    Polymer('dropbox-datastore', {
+            /**
+             * Fired when you are successful in connection to the data store of Dropbox
+			 * @event dropbox-ds-connect-success
+             */
+
+            /**
+             * Fired when you are failed to connection to the data store of Dropbox
+			 * @event dropbox-ds-connect-success
+             */
+
+	        /**
+             * app key for dropbox datastore api.
+             *
+             * @attribute appKey
+             * @type string
+             * @default null
+             */
 		    appKey: null,
+
+	        /**
+			 * When the value is true, automatically authentication is executed.
+             *
+             * @attribute autoConnect
+             * @type boolean
+             * @default false
+             */
 			autoConnect: false,
+
+            /**
+             * boolean whether already connected or not
+             *
+             * @property isConnected
+             * @type boolean
+             * @default false
+             */
 			isConnected: false,
+
+            /**
+             * datastore manager
+             *
+             * @property datastoremanager
+             * @type Object
+             * @default null,
+             */
 			dataStoreManager: null,
+
+            /**
+             * sdk object for dropbox datastore api
+             *
+             * @property client
+             * @type Object
+             * @default null,
+             */
 			client : null,
 			ready : function(){
 			    this.client = new Dropbox.Client({key: this.appKey});
@@ -46,7 +95,7 @@ custom element for dropbox datastore api
 					if(me.isConnected){
 						me.getDataStoreManager();
 					}
-					me.fire('dropbox-ds-connect-success');
+                    me.fire('dropbox-ds-connect-success');
 				});
 			},
 			getDataStoreManager: function(){
