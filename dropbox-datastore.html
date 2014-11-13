@@ -12,7 +12,7 @@ custom element for dropbox datastore api
 
 ##### Example
 
-	<dropbox-datastore appkey="${your_api_key}" autoConnect="false"></dropbox-datastore>
+    <dropbox-datastore appkey="${your_api_key}" autoConnect="false"></dropbox-datastore>
 
 @element dropbox-datastore
 @blurb Element providing datastore manager for drop datastore api
@@ -21,34 +21,34 @@ custom element for dropbox datastore api
 -->
 <polymer-element name="dropbox-datastore" attributes="appKey autoConnect" hidden>
     <script>
-	    Polymer('dropbox-datastore', {
+        Polymer('dropbox-datastore', {
             /**
              * Fired when you are successful in connection to the data store of Dropbox
-			 * @event dropbox-ds-connect-success
+             * @event dropbox-ds-connect-success
              */
 
             /**
              * Fired when you are failed to connection to the data store of Dropbox
-			 * @event dropbox-ds-connect-error
+             * @event dropbox-ds-connect-error
              */
 
-	        /**
+            /**
              * app key for dropbox datastore api.
              *
              * @attribute appKey
              * @type string
              * @default null
              */
-		    appKey: null,
+            appKey: null,
 
-	        /**
-			 * When the value is true, automatically authentication is executed.
+            /**
+             * When the value is true, automatically authentication is executed.
              *
              * @attribute autoConnect
              * @type boolean
              * @default false
              */
-			autoConnect: false,
+            autoConnect: false,
 
             /**
              * boolean whether already connected or not
@@ -57,7 +57,7 @@ custom element for dropbox datastore api
              * @type boolean
              * @default false
              */
-			isConnected: false,
+            isConnected: false,
 
             /**
              * datastore manager
@@ -66,7 +66,7 @@ custom element for dropbox datastore api
              * @type Object
              * @default null,
              */
-			dataStoreManager: null,
+            dataStoreManager: null,
 
             /**
              * sdk object for dropbox datastore api
@@ -75,33 +75,33 @@ custom element for dropbox datastore api
              * @type Object
              * @default null,
              */
-			client : null,
-			ready : function(){
-			    this.client = new Dropbox.Client({key: this.appKey});
-				this.isConnected = this.client.isAuthenticated();
-				if(!this.isConnected && this.autoConnect){
-					this.connect();
-				}
-			},
-			connect: function(){
-				var me = this,
-					client = this.client;
-				client.authenticate({interactive:true},function (e) {
-					me.isConnected = client.isAuthenticated();
-					if(e){
-						me.fire('dropbox-ds-connect-error');
-						return;
-					}
+            client: null,
+            ready: function(){
+                this.client = new Dropbox.Client({key: this.appKey});
+                this.isConnected = this.client.isAuthenticated();
+                if(!this.isConnected && this.autoConnect){
+                    this.connect();
+                }
+            },
+            connect: function(){
+                var me = this,
+                    client = this.client;
+                client.authenticate({interactive:true},function (e) {
+                    me.isConnected = client.isAuthenticated();
+                    if(e){
+                        me.fire('dropbox-ds-connect-error');
+                        return;
+                    }
 
-					if(me.isConnected){
-						me.getDataStoreManager();
-					}
+                    if(me.isConnected){
+                        me.getDataStoreManager();
+                    }
                     me.fire('dropbox-ds-connect-success');
-				});
-			},
-			getDataStoreManager: function(){
-				this.dataStoreManager = this.client.getDatastoreManager();
-			}
-		});
+                });
+            },
+            getDataStoreManager: function(){
+                this.dataStoreManager = this.client.getDatastoreManager();
+            }
+        });
     </script>
 </polymer-element>
