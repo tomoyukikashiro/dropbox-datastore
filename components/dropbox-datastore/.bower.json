@@ -1,0 +1,42 @@
+{
+  "name": "dropbox-datastore",
+  "authors": [
+    "kashiro <ksrtmyk@gmail.com>"
+  ],
+  "description": "element to get datastore manager for dropbox api",
+  "keywords": [
+    "dropbox",
+    "datastore",
+    "web-component",
+    "web-components",
+    "polymer"
+  ],
+  "main": "dropbox-datastore.html",
+  "license": "MIT",
+  "homepage": "https://github.com/kashiro/dropbox-datastore",
+  "ignore": [
+    "/.*",
+    "/tests/",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.4.2"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^0.7.3"
+  },
+  "_release": "d94afc073b",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d94afc073bee73c8034639d8904e4d3539c856f0"
+  },
+  "_source": "git://github.com/kashiro/dropbox-datastore.git",
+  "_target": "master",
+  "_originalSource": "kashiro/dropbox-datastore",
+  "_direct": true
+}

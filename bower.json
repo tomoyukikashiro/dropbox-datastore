@@ -1,0 +1,7 @@
+{
+  "name": "dropbox-datastore#gh-pages",
+  "private": true,
+  "dependencies": {
+    "dropbox-datastore": "kashiro/dropbox-datastore#master"
+  }
+}
