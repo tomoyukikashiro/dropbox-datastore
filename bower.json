@@ -1,5 +1,5 @@
 {
-  "name": "polymer-dropbox-datastore",
+  "name": "dropbox-datastore",
   "version": "0.0.4",
   "authors": [
     "kashiro <ksrtmyk@gmail.com>"
@@ -14,7 +14,7 @@
   ],
   "main": "dropbox-datastore.html",
   "license": "MIT",
-  "homepage": "https://github.com/kashiro/polymer-dropbox-datastore",
+  "homepage": "https://github.com/kashiro/dropbox-datastore",
   "ignore": [
     "/.*",
     "/tests/",
