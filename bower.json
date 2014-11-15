@@ -25,7 +25,8 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^0.4.2"
+	"polymer": "Polymer/polymer#master",
+    "webcomponentsjs": "polymer/webcomponentsjs#master"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^0.7.3"
